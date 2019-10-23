@@ -62,10 +62,17 @@ app.post('/login', (req, res) => {
     })
 })
 
-app.get('/assignments', (req, res) => {
-    connection.query("SELECT * FROM assignment", (error, rows, fields) => {
-        return res.send(rows)
+app.get('/assignments/:sid', (req, res) => {
+    var sid = req.params.sid
+    let query = "SELECT * FROM student WHERE ID = '" + sid + "'"
+    connection.query(query, (error, rows, fields) => {
+        var user = rows[0]
+        connection.query("SELECT * FROM assignment", (error, rows, fields) => {
+            var assignments = rows
+            return res.render("assignment", { assignments, user })
+        })
     })
+
 })
 
 app.use("/", express.static(__dirname + '/assets/'));
