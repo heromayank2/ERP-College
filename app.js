@@ -17,7 +17,7 @@ app.use(
         saveUninitialized: true
     })
 );
-const PORT = process.env.PORT || 1337;
+const PORT = process.env.PORT || 3000;
 
 var connection = mysql.createConnection({
     "host": "localhost",
@@ -35,16 +35,22 @@ connection.connect((err) => {
 })
 
 app.get('/', (req, res) => {
-    connection.query("SELECT * FROM student", (err, rows, fields) => {
-        return res.send(rows)
-    })
+    return res.render('choose')
 })
 
-app.get('/login', (req, res) => {
-    return res.render('login')
+app.get('/student/login', (req, res) => {
+    return res.render('slogin')
 })
 
-app.post('/login', (req, res) => {
+app.get('/teacher/login', (req, res) => {
+    return res.render('tlogin')
+})
+
+app.get('/dashboard', (req, res) => {
+    return res.render('dashboard')
+})
+
+app.post('/dashboard', (req, res) => {
     const { sid, password } = req.body
     let query = "SELECT * FROM student"
     connection.query(query, (err, rows, fields) => {
@@ -61,7 +67,23 @@ app.post('/login', (req, res) => {
         return res.send(404)
     })
 })
-
+app.post('/tlogin', (req, res) => {
+    const { sid, password } = req.body
+    let query = "SELECT * FROM student"
+    connection.query(query, (err, rows, fields) => {
+        i = 0
+        for (; i < rows.length; i++) {
+            if (rows[i].ID == sid) {
+                break
+            }
+        }
+        if (rows[i].password == password) {
+            var user = rows[i]
+            return res.render("dashboard", { user })
+        }
+        return res.send(404)
+    })
+})
 app.get('/assignments/:sid', (req, res) => {
     var sid = req.params.sid
     let query = "SELECT * FROM student WHERE ID = '" + sid + "'"
@@ -73,6 +95,13 @@ app.get('/assignments/:sid', (req, res) => {
         })
     })
 
+})
+
+app.get('/events', (req, res) => {
+    connection.query("SELECT * FROM events", (error, rows, fields) => {
+        var events = rows
+        return res.render("events", { events })
+    })
 })
 
 app.use("/", express.static(__dirname + '/assets/'));
