@@ -1,8 +1,10 @@
 var express = require('express')
 var mysql = require('mysql')
+var jwt = require('jsonwebtoken')
 const expressLayouts = require('express-ejs-layouts');
 const session = require('express-session');
-const BodyParser = require('body-parser')
+const BodyParser = require('body-parser');
+
 
 var app = express()
 app.use(expressLayouts)
@@ -17,7 +19,7 @@ app.use(
         saveUninitialized: true
     })
 );
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 var connection = mysql.createConnection({
     "host": "localhost",
@@ -67,6 +69,7 @@ app.post('/dashboard', (req, res) => {
         return res.send(404)
     })
 })
+
 app.post('/tlogin', (req, res) => {
     const { sid, password } = req.body
     let query = "SELECT * FROM student"
@@ -84,6 +87,7 @@ app.post('/tlogin', (req, res) => {
         return res.send(404)
     })
 })
+
 app.get('/assignments/:sid', (req, res) => {
     var sid = req.params.sid
     let query = "SELECT * FROM student WHERE ID = '" + sid + "'"
@@ -94,16 +98,32 @@ app.get('/assignments/:sid', (req, res) => {
             return res.render("assignment", { assignments, user })
         })
     })
-
 })
 
-app.get('/events', (req, res) => {
-    connection.query("SELECT * FROM events", (error, rows, fields) => {
-        var events = rows
-        return res.render("events", { events })
+app.get('/events/:sid', (req, res) => {
+    var sid = req.params.sid
+    let query = "SELECT * FROM student WHERE ID = '" + sid + "'"
+    connection.query(query, (error, rows, fields) => {
+        var user = rows[0]
+        connection.query("SELECT * FROM events", (error, rows, fields) => {
+            var events = rows
+            return res.render("events", { events, user })
+        })
+    })
+})
+
+app.get('/professors/:sid', (req, res) => {
+    var sid = req.params.sid
+    let query = "SELECT * FROM student WHERE ID = '" + sid + "'"
+    connection.query(query, (error, rows, fields) => {
+        var user = rows[0]
+        connection.query("SELECT * FROM professor", (error, rows, fields) => {
+            var professors = rows
+            return res.render("professor", { professors, user })
+        })
     })
 })
 
 app.use("/", express.static(__dirname + '/assets/'));
 
-app.listen(PORT, console.log("Listening on PORT " + PORT));
+app.listen(4000, console.log("Listening on PORT " + PORT));

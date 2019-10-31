@@ -1,208 +1,90 @@
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard</title>
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <link href="/css/dashboard.css" rel="stylesheet">
-    <script src="/js/dashboard.js"></script>
-</head>
+<div class="row" style="margin-right: 0px;;">
+    <div class="col-lg-3 " style="height:100vh;position: fixed;">
+        <center>
+            <img src="/student-images/<%=user.ID%>.jpg" height="200px" width="200px" style="border-radius: 50%;margin-top: 30px;">
+            <hr style="width:40%">
+            <h1 style="font-family: 'Enriqueta', serif;">
+                <%=user.Name%>
+            </h1>
+            <br><br>
+            <div style="text-align: left;padding-left:50px;">
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>College Id:</strong>
+                    <%=user.ID%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Phone Number:</strong>
+                    <%=user['Phone Number']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Age:</strong>
+                    <%=user.Age%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"> <strong>Year:</strong>
 
-<body>
-    <div class="page-wrapper chiller-theme toggled">
-        <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
-            <i class="fas fa-bars"></i>
+                    <%=user.Year%> to
+                        <%=user.Year+4%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Batch:</strong>
+                    <%=user['Batch']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Fees Status:</strong>
+                    <%=user['Fees Status']%>
+                </p><br><br>
+                <button class="btn btn-success">Logout</button>
+                <br><br>
+
+            </div>
+            <div class="footer my-auto" style="background-color: #f1f1f1;bottom: 0;position:absolute;left:0;margin-left: 20px;;">
+                <center>
+                    <p>Terms and Conditions</p>
+                </center>
+            </div>
+
+        </center>
+    </div>
+    <div class="col-lg-3" style="margin-left:25%;padding:30px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);position: fixed;">
+        <a href="/events/<%=user['ID']%>" style="text-decoration: none;">
+            <div class="alert alert-danger">
+                <center>
+                    <img src="/images/events.png" height="150px" width="150px">
+                    <h2>Events</h2>
+                </center>
+            </div>
         </a>
-        <nav id="sidebar" class="sidebar-wrapper">
-            <div class="sidebar-content">
-                <div class="sidebar-brand">
-                    <a href="/dashboard">ERP - IIITK</a>
-                    <div id="close-sidebar">
-                        <i class="fas fa-times"></i>
-                    </div>
+        <div class="alert alert-warning">
+            <center>
+                <img src="/images/professors.png" height="150px" width="150px">
+                <h2>Professors</h2>
+            </center>
+        </div>
+        <div class="alert alert-info">
+            <center>
+                <img src="/images/results.png" height="150px" width="150px">
+                <h2>Results</h2>
+            </center>
+        </div>
+    </div>
+    <div class="col-lg-6" style="margin-left:50%;padding:30px;">
+         <a href="/dashboard/" style="text-decoration: none;">
+                ↩️</a>
+        <center>
+            <h1 style="font-family: 'Press Start 2P', cursive;color: #D4EDDA;">Assignments</h1>
+            <br>
+            <%assignments.forEach((assignment)=>{%>
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">
+                        <%=assignment.Heading%>
+                    </h4>
+                    <p>Deadline :
+                        <%=assignment.Deadline%>
+                    </p>
+                    <p>Batch :
+                        <%=assignment.Batch%>
+                    </p>
+                    <hr>
+                    <p class="mb-0">
+                        <%=assignment.Content%>
+                    </p>
                 </div>
-                <div class="sidebar-header">
-                    <div class="user-pic">
-                        <img class="img-responsive img-rounded" src="/student-images/<%=user.ID%>.jpg" alt="User picture" style="height: 60px;width:60px;">
-                    </div>
-                    <div class="user-info">
-                        <span class="user-name">
-                                <%= user.Name %>
-              </span>
-                        <span class="user-role"><%=user.ID%></span>
-                        <span class="user-status">
-                                <%= user.Branch%> <%=user.Year%>
-                            </span>
-                    </div>
-                </div>
-                <!-- sidebar-header  -->
-                <div class="sidebar-menu">
-                    <ul>
-                        <li class="header-menu">
-                            <span>General</span>
-                        </li>
-                        <li class="sidebar-dropdown">
-                            <a href="#">
-                                <i class="fa fa-tachometer-alt"></i>
-                                <span>Assignemnts</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-dropdown">
-                            <a href="#">
-                                <i class="fa fa-shopping-cart"></i>
-                                <span>Events</span>
-                            </a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li>
-                                        <a href="#">Products
-    
-                      </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Orders</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Credit cart</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="sidebar-dropdown">
-                            <a href="#">
-                                <i class="far fa-gem"></i>
-                                <span>Components</span>
-                            </a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li>
-                                        <a href="#">General</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Panels</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Tables</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Icons</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Forms</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="sidebar-dropdown">
-                            <a href="#">
-                                <i class="fa fa-chart-line"></i>
-                                <span>Charts</span>
-                            </a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li>
-                                        <a href="#">Pie chart</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Line chart</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Bar chart</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Histogram</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="sidebar-dropdown">
-                            <a href="#">
-                                <i class="fa fa-globe"></i>
-                                <span>Maps</span>
-                            </a>
-                            <div class="sidebar-submenu">
-                                <ul>
-                                    <li>
-                                        <a href="#">Google maps</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Open street map</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="header-menu">
-                            <span>Extra</span>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-book"></i>
-                                <span>Documentation</span>
-                                <span class="badge badge-pill badge-primary">Beta</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-calendar"></i>
-                                <span>Calendar</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-folder"></i>
-                                <span>Examples</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- sidebar-menu  -->
-            </div>
-            <!-- sidebar-content  -->
-            <div class="sidebar-footer">
-                <a href="#">
-                    <i class="fa fa-bell"></i>
-                    <span class="badge badge-pill badge-warning notification">3</span>
-                </a>
-                <a href="#">
-                    <i class="fa fa-envelope"></i>
-                    <span class="badge badge-pill badge-success notification">7</span>
-                </a>
-                <a href="#">
-                    <i class="fa fa-cog"></i>
-                    <span class="badge-sonar"></span>
-                </a>
-                <a href="#">
-                    <i class="fa fa-power-off"></i>
-                </a>
-            </div>
-        </nav>
-        <main class="page-content">
-            <h1 style="font-family: 'Oswald', sans-serif;">Assignments</h1>
-            <hr/>
-            <div class="list-group" style="padding: 30px;">
-                <% if(assignments){ assignments.forEach(function(assignment){ %>
-                    <% if(assignment.Year==user.Year){%>
-                        <a class="list-group-item list-group-item-action list-group-item-primary" style="width:500px">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">
-                                    <%=assignment.Heading%>
-                                </h5>
-
-                            </div>
-                            <small><%=assignment.Deadline%></small>
-                            <p class="mb-1">
-                                <%=assignment.Content%>
-                            </p>
-                            <small><%=assignment.Batch%> <%=assignment.Year%></small>
-                        </a>
-                        <%}})}%>
-            </div>
-        </main>
-
-
-        <!-- page-wrapper -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-</body>
+                <%})%>
+        </center>
+    </div>
+</div>

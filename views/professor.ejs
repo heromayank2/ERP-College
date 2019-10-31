@@ -49,14 +49,12 @@
                 </center>
             </div>
         </a>
-        <a href="/professors/<%=user['ID']%>" style="text-decoration: none;">
-            <div class="alert alert-warning">
-                <center>
-                    <img src="/images/professors.png" height="150px" width="150px">
-                    <h2>Professors</h2>
-                </center>
-            </div>
-        </a>
+        <div class="alert alert-warning">
+            <center>
+                <img src="/images/professors.png" height="150px" width="150px">
+                <h2>Professors</h2>
+            </center>
+        </div>
         <div class="alert alert-info">
             <center>
                 <img src="/images/results.png" height="150px" width="150px">
@@ -68,37 +66,37 @@
         <a href="/dashboard/" style="text-decoration: none;">
                 ↩️</a>
         <center>
-            <h1 style="font-family: 'Press Start 2P', cursive;color: #F8D7DA;">
-                Events</h1>
+            <h1 style="font-family: 'Press Start 2P', cursive;color: #FFF3CD;">
+                Professors</h1>
             <br>
-            <%events.forEach((event)=>{%>
-                <div class="alert alert-danger" role="alert">
-                    <div class="row">
-                        <div clas="col-lg-3">
+            <div class="row">
+                <%professors.forEach((professor)=>{%>
+
+                    <div clas="col-lg-4" style="margin-left:30px;">
+                        <div class="alert alert-warning" role="alert" style="padding:40px;">
                             <center>
-                                <img src="<%=event['Image URLs']%>" style="border-radius: 50%;width:200px;height: 200px;border:2px solid pink">
+                                <img src="/professor-images/<%=professor.ID%>.jpg" style="border-radius: 50%;width:170px;height: 170px;border:2px solid palegoldenrod">
+                                <br><br>
+                                <h4>
+                                    <%=professor.Name%>
+                                </h4>
+                                <hr/>
+                                <h6>
+                                    Phone Number: +91
+                                    <%=professor['Phone Number']%>
+                                </h6>
+                                <h6>
+                                    Email:
+                                    <%=professor['Email']%>
+                                </h6>
+                                <h6>
+                                    <%=professor.Role%>
+                                </h6>
                             </center>
                         </div>
-                        <div class="col-lg-8">
-                            <h3>
-                                <%=event['Heading']%>
-                            </h3>
-                            <h6>
-                                Date:
-                                <%=event['Date']%>
-                                    Time:
-                                    <%=event['Time']%>
-                            </h6>
-                            <p>
-                                <%=event.Description%>
-                            </p>
-                            <%if(event.URL){%>
-                                <h6>Follow Here: <a href="<%=event.URL%>">link</a></h6>
-                                <%}%>
-                        </div>
                     </div>
-                </div>
-                <%})%>
+                    <%})%>
+            </div>
         </center>
     </div>
 </div>
