@@ -3,28 +3,28 @@
         <center>
             <img src="/professor-images/<%=user.ID%>.jpg" height="200px" width="200px" style="border-radius: 50%;margin-top: 30px;">
             <hr style="width:40%">
-            <h1 style="font-family: 'Enriqueta', serif;">
+            <h2 style="font-family: 'Enriqueta', serif;">
                 <%=user.Name%>
-            </h1>
+            </h2>
             <br><br>
             <div style="text-align: left;padding-left:50px;">
-                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>College Id:</strong>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Professor Id:</strong>
                     <%=user.ID%>
                 </p>
                 <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Phone Number:</strong>
                     <%=user['Phone Number']%>
                 </p>
-                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Phone Number:</strong>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Email:</strong>
                     <%=user['Email']%>
                 </p>
-                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Phone Number:</strong>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Role:</strong>
                     <%=user['Role']%>
                 </p>
-                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Phone Number:</strong>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Joining Date:</strong>
                     <%=user['JoiningDate']%>
                 </p>
                 <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Salary Status:</strong>
-                    <%=user['Fees Status']%>
+                    <%=user['Salary Status']%>
                 </p><br><br>
                 <button class="btn btn-success">Logout</button>
                 <br><br>
@@ -39,5 +39,120 @@
         </center>
     </div>
     <div class="col-lg-9" style="margin-left:25%">
+    <div class="row" style="margin-top:20px;margin-left:0px;">
+        
+        <div class="col-lg-3">
+        <a href="/create/assignment/<%=user.PID%>" style="text-decoration:none;">
+         <div class="alert alert-success" style="padding:30px;">
+         <center>
+         <img src="/images/assignments.png" height="170px" width="170px">
+            <h2>Create Assignment</h2> 
+         </center>       
+        </div>
+</a>
+        </div>
+        
+        <div class="col-lg-3">
+        <a href="/create/event/<%=user.PID%>"  style="text-decoration:none;">
+         <div class="alert alert-danger" style="padding:30px;">
+         <center>
+         <img src="/images/events.png" height="170px" width="170px" style="margin-bottom:37px;">
+            <h2>Create Event</h2> 
+         </center>       
+        </div>
+         </a>
+        </div>
+       
+       
+        <div class="col-lg-3">
+         <a href="/create/announcement/<%=user.PID%>"  style="text-decoration:none;">
+         <div class="alert alert-info" style="padding:30px;">
+         <center>
+         <img src="/images/warning.png" height="170px" width="170px">
+            <h2>Make Annoucement</h2> 
+         </center>       
+        </div>
+        </a>
+        </div>
+        
+        
+        <div class="col-lg-3">
+        <a href="/upload/result/<%=user.PID%>"  style="text-decoration:none;">
+         <div class="alert alert-primary" style="padding:30px;">
+         <center>
+         <img src="/images/results.png" height="170px" width="170px">
+            <h2>Upload Result</h2> 
+         </center>       
+        </div>
+        </a>
+        </div>
+         <div class="col-lg-3">
+        <a href="/create/attendence/<%=user.PID%>" style="text-decoration:none;">
+         <div class="alert alert-primary" style="padding:30px;">
+         <center>
+         <img src="/images/attendance.png" height="170px" width="170px">
+            <h2>Mark Attendence</h2> 
+         </center>       
+        </div>
+</a>
+        </div>
+        
+        <div class="col-lg-3">
+        <a href="/view/event/<%=user.PID%>"  style="text-decoration:none;">
+         <div class="alert alert-warning" style="padding:30px;">
+         <center>
+         <img src="/images/calendar.png" height="170px" width="170px" style="margin-bottom:37px;">
+            <h2>View Event</h2> 
+         </center>       
+        </div>
+         </a>
+        </div>
+       
+       <div class="col-lg-3">
+         <a href="/view/assignment/<%=user.PID%>"  style="text-decoration:none;">
+         <div class="alert alert-danger" style="padding:30px;">
+         <center>
+         <img src="/images/assignment.png" height="170px" width="170px">
+            <h2>View Assignment</h2> 
+         </center>       
+        </div>
+        </a>
+        </div>
+       
+        <div class="col-lg-3">
+         <a href="/view/announcement/<%=user.PID%>"  style="text-decoration:none;">
+         <div class="alert alert-info" style="padding:30px;">
+         <center>
+         <img src="/images/promotion.png" height="170px" width="170px">
+            <h2>View Annoucement</h2> 
+         </center>       
+        </div>
+        </a>
+        </div>
+        
+        
+        <div class="col-lg-3">
+        <a href="/upload/result/<%=user.PID%>"  style="text-decoration:none;">
+         <div class="alert alert-success" style="padding:30px;">
+         <center>
+         <img src="/images/research.png" height="170px" width="170px">
+            <h2>View Results</h2> 
+         </center>       
+        </div>
+        </a>
+        </div>
+
+        <div class="col-lg-3">
+        <a href="/upload/attendence/<%=user.PID%>"  style="text-decoration:none;">
+         <div class="alert alert-info" style="padding:30px;">
+         <center>
+         <img src="/images/attendence2.png" height="170px" width="170px">
+            <h2>View Attendence</h2> 
+         </center>       
+        </div>
+        </a>
+        </div>
+
+    </div>
     </div>
 </div>

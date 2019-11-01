@@ -1,0 +1,125 @@
+<div class="row" style="margin-right: 0px;;">
+    <div class="col-lg-3 " style="height:100vh; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);position: fixed;">
+        <center>
+            <img src="/professor-images/<%=user.ID%>.jpg" height="200px" width="200px" style="border-radius: 50%;margin-top: 30px;">
+            <hr style="width:40%">
+            <h2 style="font-family: 'Enriqueta', serif;">
+                <%=user.Name%>
+            </h2>
+            <br><br>
+            <div style="text-align: left;padding-left:50px;">
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Professor Id:</strong>
+                    <%=user.ID%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Phone Number:</strong>
+                    <%=user['Phone Number']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Email:</strong>
+                    <%=user['Email']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Role:</strong>
+                    <%=user['Role']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Joining Date:</strong>
+                    <%=user['JoiningDate']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Salary Status:</strong>
+                    <%=user['Salary Status']%>
+                </p><br><br>
+                <button class="btn btn-success">Logout</button>
+                <br><br>
+
+            </div>
+            <div class="footer my-auto" style="background-color: #f1f1f1;bottom: 0;position:absolute;left:0;margin-left: 20px;;">
+                <center>
+                    <p>Terms and Conditions</p>
+                </center>
+            </div>
+
+        </center>
+    </div>
+    <div class="col-lg-9" style="margin-left:27%">
+        <a href="/teacher/dashboard/<%=user.PID%>" style="text-decoration: none;">
+            ↩️</a>
+        <%if(view=="assignment"){%>
+            <center>
+                <h1 style="font-family: 'Press Start 2P', cursive;color: #D4EDDA;">Present Assignments</h1>
+            </center>
+            <br>
+            <div class="row">
+                <%assignments.forEach((assignment)=>{%>
+                    <div class="alert alert-success col-lg-3 m-4" role="alert">
+                        <h4 class="alert-heading">
+                            <%=assignment.Heading%>
+                        </h4>
+                        <p>Deadline :
+                            <%=assignment.Deadline%>
+                        </p>
+                        <p>Batch :
+                            <%=assignment.Batch%>
+                        </p>
+                        <hr>
+                        <p class="mb-0">
+                            <%=assignment.Content%>
+                        </p>
+                    </div>
+                    <%})%>
+            </div>
+            <%}%>
+                <%if(view=="announcement"){%>
+                    <center>
+                        <h1 style="font-family: 'Press Start 2P', cursive;color: #D4EDDA;">Announcements</h1>
+                    </center>
+                    <br>
+                    <div class="row">
+                        <%announcements.forEach((announcement)=>{%>
+                            <div class="alert alert-success col-lg-3 m-4" role="alert">
+                                <h4 class="alert-heading">
+                                    <%=announcement.Heading%>
+                                </h4>
+                                <p>Created on Date :
+                                    <%=assignment['Creation Date']%>
+                                </p>
+                                <p>Expiry Date :
+                                    <%=assignment['Expiry Date']%>
+                                </p>
+                                <hr>
+                                <p class="mb-0">
+                                    <%=assignment.Content%>
+                                </p>
+                            </div>
+                            <%})%>
+                    </div>
+                    <%}%>
+                        <%if(view=="event"){%>
+                            <center>
+                                <h1 style="font-family: 'Press Start 2P', cursive;color: #D4EDDA;">Events</h1>
+                            </center>
+                            <br>
+                            <div class="row">
+                                <%events.forEach((event)=>{%>
+                                    <div class="alert alert-success col-lg-3 m-4" role="alert">
+                                        <center>
+                                            <img src="<%=event['Image URLs']%>" style="border-radius: 50%;width:200px;height: 200px;border:2px solid pink">
+                                        </center>
+                                        <h3>
+                                            <%=event['Heading']%>
+                                        </h3>
+                                        <h6>
+                                            Date:
+                                            <%=event['Date']%>
+                                                Time:
+                                                <%=event['Time']%>
+                                        </h6>
+                                        <p>
+                                            <%=event.Description%>
+                                        </p>
+                                        <%if(event.URL){%>
+                                            <h6>Follow Here: <a href="<%=event.URL%>">link</a></h6>
+                                            <%}%>
+                                    </div>
+                                    <%})%>
+                            </div>
+                            <%}%>
+    </div>
+</div>

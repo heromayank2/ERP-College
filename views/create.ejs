@@ -1,0 +1,193 @@
+<div class="row" style="margin-right: 0px;;">
+    <div class="col-lg-3 " style="height:100vh; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);position: fixed;">
+        <center>
+            <img src="/professor-images/<%=user.ID%>.jpg" height="200px" width="200px" style="border-radius: 50%;margin-top: 30px;">
+            <hr style="width:40%">
+            <h2 style="font-family: 'Enriqueta', serif;">
+                <%=user.Name%>
+            </h2>
+            <br><br>
+            <div style="text-align: left;padding-left:50px;">
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Professor Id:</strong>
+                    <%=user.ID%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Phone Number:</strong>
+                    <%=user['Phone Number']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Email:</strong>
+                    <%=user['Email']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Role:</strong>
+                    <%=user['Role']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Joining Date:</strong>
+                    <%=user['JoiningDate']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Salary Status:</strong>
+                    <%=user['Salary Status']%>
+                </p><br><br>
+                <button class="btn btn-success">Logout</button>
+                <br><br>
+
+            </div>
+            <div class="footer my-auto" style="background-color: #f1f1f1;bottom: 0;position:absolute;left:0;margin-left: 20px;;">
+                <center>
+                    <p>Terms and Conditions</p>
+                </center>
+            </div>
+
+        </center>
+    </div>
+    <div class="col-lg-9" style="margin-left:25%">
+        <%if(create=="announcement"){%>
+            <a href="/teacher/dashboard/<%=user['PID']%>" style="text-decoration: none;">
+                ↩️</a>
+            <center>
+                <h1 style="font-family: 'Press Start 2P', cursive;color: #FFF3CD;">
+                    Create Announcement</h1>
+            </center>
+            <form style="margin-left:200px;margin-right:200px;margin-top:40px;" action="/create/announcement/" method="post">
+                <div class="form-group">
+                    <label for="heading">Heading</label>
+                    <input type="heading" class="form-control" id="heading" placeholder="heading">
+                </div>
+                <div class="form-group">
+                    <label for="cdate">Creation Date:</label>
+                    <input type="cdate" class="form-control" id="cdate" placeholder="DD/MM/YYYY">
+                </div>
+                <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea type="content" class="form-control" id="content" placeholder="Content"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="edate">Expiry Date:</label>
+                    <input type="edate" class="form-control" id="edate" placeholder="DD/MM/YYYY">
+                </div>
+                <div class="form-group">
+                    <label for="restriction">Restricted</label>
+                    <select class="form-control" id="restriction">
+                            <option>All</option>
+                            <option>2016</option>
+                            <option>2017</option>
+                            <option>2018</option>
+                            <option>2019</option>
+                        </select>
+                </div>
+                <button type="submit" class="btn btn-warning">Submit</button>
+            </form>
+            <%}%>
+                <%if(create=="assignment"){%>
+                    <a href="/teacher/dashboard/<%=user['PID']%>" style="text-decoration: none;">
+                    ↩️</a>
+                    <center>
+                        <h1 style="font-family: 'Press Start 2P', cursive;color: #D4EDDA;">
+                            Create Assignment</h1>
+                    </center>
+                    <form style="margin-left:200px;margin-right:200px;margin-top:40px;" action="/create/assignment/" method="post">
+                        <div class="form-group">
+                            <label for="heading">Heading</label>
+                            <input type="heading" class="form-control" id="heading" placeholder="heading">
+                        </div>
+                        <div class="form-group">
+                            <label for="deadline">Deadline</label>
+                            <input type="text" class="form-control" id="deadline" placeholder="DD/MM/YYYY">
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Content</label>
+                            <textarea class="form-control" id="content" placeholder="Content"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="restriction">Year</label>
+                            <select class="form-control" id="restriction">
+                                <option>2016</option>
+                                <option>2017</option>
+                                <option>2018</option>
+                                <option>2019</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="restriction">Year</label>
+                            <select class="form-control" id="restriction">
+                                    <option>A1</option>
+                                    <option>A2</option>
+                                    <option>A3</option>
+                                    <option>A4</option>
+                                    <option>B1</option>
+                                    <option>B2</option>
+                                </select>
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                    <%}%>
+                        <%if(create=="event"){%>
+                            <a href="/teacher/dashboard/<%=user['PID']%>" style="text-decoration: none;">
+                        ↩️</a>
+                            <center>
+                                <h1 style="font-family: 'Press Start 2P', cursive;color: rgb(209, 102, 111);">
+                                    Create event</h1>
+                            </center>
+                            <form style="margin-left:200px;margin-right:200px;margin-top:40px;" action="/create/assignment/" method="post">
+                                <div class="form-group">
+                                    <label for="heading">Heading</label>
+                                    <input type="text" class="form-control" id="heading" placeholder="heading">
+                                </div>
+                                <div class="form-group">
+                                    <label for="date">Date</label>
+                                    <input type="text" class="form-control" id="date" placeholder="dd/mm/yyyy">
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <textarea type="description" class="form-control" id="description" placeholder="Description"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="iurl">Image URL</label>
+                                    <input type="text" class="form-control" id="iurl" placeholder="http://">
+                                </div>
+                                <div class="form-group">
+                                    <label for="eurl">Event URL</label>
+                                    <input type="text" class="form-control" id="eurl" placeholder="Event URL (if any)">
+                                </div>
+                                <div class="form-group">
+                                    <label for="time">Time</label>
+                                    <input type="text" class="form-control" id="time" placeholder="hh:mm:ss">
+                                </div>
+                                <button type="submit" class="btn btn-danger">Submit</button>
+                            </form>
+                            <%}%>
+                                    <%if(create=="result"){%>
+                                        <a href="/teacher/dashboard/<%=user['PID']%>" style="text-decoration: none;">
+                            ↩️</a>
+                                        <center>
+                                            <h1 style="font-family: 'Press Start 2P', cursive;color: rgb(209, 102, 111);">
+                                                Upload Result</h1>
+                                        </center>
+                                        <form style="margin-left:200px;margin-right:200px;margin-top:40px;" action="/create/assignment/" method="post">
+                                            <div class="form-group">
+                                                <label for="heading">Student ID</label>
+                                                <input type="text" class="form-control" id="heading" placeholder="heading">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="date">Date</label>
+                                                <input type="text" class="form-control" id="date" placeholder="dd/mm/yyyy">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="description">Description</label>
+                                                <textarea type="description" class="form-control" id="description" placeholder="Description"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="iurl">Image URL</label>
+                                                <input type="text" class="form-control" id="iurl" placeholder="http://">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="eurl">Event URL</label>
+                                                <input type="text" class="form-control" id="eurl" placeholder="Event URL (if any)">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="time">Time</label>
+                                                <input type="text" class="form-control" id="time" placeholder="hh:mm:ss">
+                                            </div>
+                                            <button type="submit" class="btn btn-danger">Submit</button>
+                                        </form>
+        <%}%>
+    </div>
+</div>

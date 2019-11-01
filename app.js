@@ -229,6 +229,88 @@ app.get('/timetable/:sid', (req, res) => {
     })
 })
 
+app.get('/create/assignment/:pid', (req, res) => {
+    var pid = req.params.pid
+    let query = "SELECT * FROM professor WHERE PID = '" + pid + "'"
+    connection.query(query, (error, rows, fields) => {
+        var user = rows[0]
+        var create = "assignment"
+        return res.render("create", { user, create })
+    })
+})
+
+
+app.get('/create/event/:pid', (req, res) => {
+    var pid = req.params.pid
+    let query = "SELECT * FROM professor WHERE PID = '" + pid + "'"
+    connection.query(query, (error, rows, fields) => {
+        var user = rows[0]
+        var create = "event"
+        return res.render("create", { user, create })
+    })
+})
+
+app.get('/upload/result/:pid', (req, res) => {
+    var pid = req.params.pid
+    let query = "SELECT * FROM professor WHERE PID = '" + pid + "'"
+    connection.query(query, (error, rows, fields) => {
+        var user = rows[0]
+        var create = "result"
+        return res.render("create", { user, create })
+    })
+})
+
+
+app.get('/create/announcement/:pid', (req, res) => {
+    var pid = req.params.pid
+    let query = "SELECT * FROM professor WHERE PID = '" + pid + "'"
+    connection.query(query, (error, rows, fields) => {
+        var user = rows[0]
+        var create = "announcement"
+        return res.render("create", { user, create })
+    })
+})
+
+app.get('/view/announcement/:pid', (req, res) => {
+    var pid = req.params.pid
+    let query = "SELECT * FROM professor WHERE PID = '" + pid + "'"
+    connection.query(query, (error, rows, fields) => {
+        var user = rows[0]
+        var view = "announcement"
+        connection.query("SELECT * FROM announcements", (error, rows, fields) => {
+            var announcements = rows
+            return res.render("view", { user, announcements, view })
+        })
+
+    })
+})
+
+app.get('/view/event/:pid', (req, res) => {
+    var pid = req.params.pid
+    let query = "SELECT * FROM professor WHERE PID = '" + pid + "'"
+    connection.query(query, (error, rows, fields) => {
+        var user = rows[0]
+        var view = "event"
+        connection.query("SELECT * FROM events", (error, rows, fields) => {
+            var events = rows
+            return res.render("view", { user, events, view })
+        })
+
+    })
+})
+app.get('/view/assignment/:pid', (req, res) => {
+    var pid = req.params.pid
+    let query = "SELECT * FROM professor WHERE PID = '" + pid + "'"
+    connection.query(query, (error, rows, fields) => {
+        var user = rows[0]
+        var view = "assignment"
+        connection.query("SELECT * FROM assignment", (error, rows, fields) => {
+            var assignments = rows
+            return res.render("view", { user, assignments, view })
+        })
+
+    })
+})
 
 
 app.use("/", express.static(__dirname + '/assets/'));
