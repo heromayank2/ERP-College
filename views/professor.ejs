@@ -41,7 +41,7 @@
         </center>
     </div>
     <div class="col-lg-3" style="margin-left:25%;padding:30px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);position: fixed;">
-        <a href="/assignments/<%=user['ID']%>" style="text-decoration: none;">
+        <a href="/assignments/<%=user['SID']%>" style="text-decoration: none;">
             <div class="alert alert-success">
                 <center>
                     <img src="/images/assignments.png" height="150px" width="150px">
@@ -49,21 +49,25 @@
                 </center>
             </div>
         </a>
-        <div class="alert alert-warning">
-            <center>
-                <img src="/images/professors.png" height="150px" width="150px">
-                <h2>Professors</h2>
-            </center>
-        </div>
-        <div class="alert alert-info">
-            <center>
-                <img src="/images/results.png" height="150px" width="150px">
-                <h2>Results</h2>
-            </center>
-        </div>
+        <a href="/professors/<%=user['SID']%>" style="text-decoration: none;">
+            <div class="alert alert-warning">
+                <center>
+                    <img src="/images/professors.png" height="150px" width="150px">
+                    <h2>Professors</h2>
+                </center>
+            </div>
+        </a>
+        <a href="/results/<%=user['SID']%>" style="text-decoration: none;">
+            <div class="alert alert-info">
+                <center>
+                    <img src="/images/results.png" height="150px" width="150px">
+                    <h2>Results</h2>
+                </center>
+            </div>
+        </a>
     </div>
     <div class="col-lg-6" style="margin-left:50%;padding:30px;">
-        <a href="/dashboard/" style="text-decoration: none;">
+        <a href="/dashboard/<%=user['SID']%>" style="text-decoration: none;">
                 ↩️</a>
         <center>
             <h1 style="font-family: 'Press Start 2P', cursive;color: #FFF3CD;">

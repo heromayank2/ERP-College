@@ -40,8 +40,36 @@
 
         </center>
     </div>
-    <div class="col-lg-9" style="padding:60px;margin-left:25%;">
-        <a href="/assignments/<%=user.ID%>" style="text-decoration: none;">
+    <div class="col-lg-9" style="padding-left:60px;padding-right:60px;margin-left:25%;">
+        <div class="row">
+            <div class="col-lg-3 m-2">
+                <a href="/dashboard/<%=user.SID%>">
+                    <img src="/images/home.png" height="23px" width="25px" title="Dashboard">
+                </a>
+            </div>
+            <div class="col-lg-8 m-2" style="text-align: right;">
+                <div class="btn-group">
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="/images/warning.png" height="25px" width="25px" title="Notifications">
+                    </button>
+                    <div class="dropdown-menu">
+
+                        <a class="dropdown-item" href="#">Action</a>
+
+                    </div>
+                </div>
+                <button class="btn">
+                        <img src="/images/camera.png"height="25px" width="25px" title="Holidays">
+                    </button>&nbsp;
+                <a href="/timetable/<%=user.SID%>">
+                    <img src="/images/schedule.png" height="25px" width="25px" title="Time Table">
+                </a>&nbsp;&nbsp;
+                <a href="/books/<%=user.SID%>">
+                    <img src="/images/books.png" height="25px" width="25px" title="My Books">
+                </a>
+            </div>
+        </div>
+        <a href="/assignments/<%=user.SID%>" style="text-decoration: none;">
             <div class="alert alert-success" style="margin-bottom: 30px;">
                 <div class="row ">
                     <div class="col-lg-3 my-auto " style='padding:40px;'>
@@ -61,63 +89,110 @@
                 </div>
             </div>
         </a>
+        <a href="/events/<%=user.SID%>" style="text-decoration: none;">
+            <div class="alert alert-danger " style="margin-bottom: 30px; ">
+                <div class="row ">
+                    <div class="col-lg-3 my-auto " style='padding:40px; '>
+                        <center>
+                            <div>
+                                <img src="/images/events.png " height="160px " width="160px ">
+                            </div>
 
-        <div class="alert alert-danger " style="margin-bottom: 30px; ">
-            <div class="row ">
-                <div class="col-lg-3 my-auto " style='padding:40px; '>
-                    <center>
-                        <div>
-                            <img src="/images/events.png " height="160px " width="160px ">
-                        </div>
-
-                    </center>
-                </div>
-                <div class="col-lg-9 " style="padding: 30px; ">
-                    <h1>Events</h1>
-                    <ul>
-
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="alert alert-warning " style="margin-bottom: 30px; ">
-            <div class="row ">
-                <div class="col-lg-3 my-auto " style='padding:40px; '>
-                    <center>
-                        <div>
-                            <img src="/images/teachers.png " height="160px " width="160px ">
-                        </div>
-
-                    </center>
-                </div>
-                <div class="col-lg-9 " style="padding: 30px; ">
-                    <h1>Professors</h1>
-                    <ul>
+                        </center>
+                    </div>
+                    <div class="col-lg-9 " style="padding: 30px; ">
+                        <h1>Events</h1>
+                        <ul>
 
 
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="alert alert-info ">
-            <div class="row ">
-                <div class="col-lg-3 my-auto " style='padding:40px; '>
-                    <center>
-                        <div>
-                            <img src="/images/results.png " height="160px " width="160px ">
-                        </div>
+        </a>
+        <a href="/professors/<%=user.SID%>" style="text-decoration: none;">
+            <div class="alert alert-warning " style="margin-bottom: 30px; ">
+                <div class="row ">
+                    <div class="col-lg-3 my-auto " style='padding:40px; '>
+                        <center>
+                            <div>
+                                <img src="/images/teachers.png " height="160px " width="160px ">
+                            </div>
 
-                    </center>
-                </div>
-                <div class="col-lg-9 " style="padding: 30px; ">
-                    <h1>View Results</h1>
-                    <ul>
+                        </center>
+                    </div>
+                    <div class="col-lg-9 " style="padding: 30px; ">
+                        <h1>Professors</h1>
+                        <ul>
 
 
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
+        <a href="/results/<%=user.SID%>" style="text-decoration: none;">
+            <div class="alert alert-info " style="margin-bottom: 30px; ">
+                <div class="row ">
+                    <div class="col-lg-3 my-auto " style='padding:40px; '>
+                        <center>
+                            <div>
+                                <img src="/images/results.png " height="160px " width="160px ">
+                            </div>
+
+                        </center>
+                    </div>
+                    <div class="col-lg-9 " style="padding: 30px; ">
+                        <h1>View Results</h1>
+                        <ul>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="/library/<%=user.SID%>" style="text-decoration: none;">
+            <div class="alert alert-primary" style="margin-bottom:30px;">
+                <div class="row ">
+                    <div class="col-lg-3 my-auto " style='padding:40px; '>
+                        <center>
+                            <div>
+                                <img src="/images/library.png " height="160px " width="160px ">
+                            </div>
+
+                        </center>
+                    </div>
+                    <div class="col-lg-9 " style="padding: 30px; ">
+                        <h1>Library</h1>
+                        <ul>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="/attendence/<%=user.SID%>" style="text-decoration: none;">
+            <div class="alert alert-success">
+                <div class="row ">
+                    <div class="col-lg-3 my-auto " style='padding:40px; '>
+                        <center>
+                            <div>
+                                <img src="/images/attendance.png " height="160px " width="160px ">
+                            </div>
+
+                        </center>
+                    </div>
+                    <div class="col-lg-9 " style="padding: 30px; ">
+                        <h1>Attendence</h1>
+                        <ul>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </a>
     </div>
 </div>

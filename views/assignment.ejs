@@ -49,21 +49,25 @@
                 </center>
             </div>
         </a>
+        <a href="/professors/<%=user['SID']%>" style="text-decoration: none;">
         <div class="alert alert-warning">
             <center>
                 <img src="/images/professors.png" height="150px" width="150px">
                 <h2>Professors</h2>
             </center>
         </div>
+        </a>
+        <a href="/results/<%=user['SID']%>" style="text-decoration: none;">
         <div class="alert alert-info">
             <center>
                 <img src="/images/results.png" height="150px" width="150px">
                 <h2>Results</h2>
             </center>
         </div>
+        </a>
     </div>
     <div class="col-lg-6" style="margin-left:50%;padding:30px;">
-         <a href="/dashboard/" style="text-decoration: none;">
+         <a href="/dashboard/<%=user.SID%>" style="text-decoration: none;">
                 ↩️</a>
         <center>
             <h1 style="font-family: 'Press Start 2P', cursive;color: #D4EDDA;">Assignments</h1>
