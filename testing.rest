@@ -1,0 +1,17 @@
+POST http://localhost:4000/create/announcement/kyEzYfh2BTylIN2L55HW
+Content-Type: application/json
+
+{
+	"heading":"Inter IIIT",
+	"content":"Inter IIIT KOTA",
+	"cdate":"01/11/2019",
+	"edate":"11/11/2019",
+	"restriction":"2019"
+}
+###
+POST http://localhost:4000/create/event/kyEzYfh2BTylIN2L55HW
+Content-Type: application/json
+
+{
+	
+}

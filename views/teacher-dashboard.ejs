@@ -26,7 +26,8 @@
                 <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Salary Status:</strong>
                     <%=user['Salary Status']%>
                 </p><br><br>
-                <button class="btn btn-success">Logout</button>
+                <a href="/">
+                <button class="btn btn-success">Logout</button></a>
                 <br><br>
 
             </div>
@@ -132,7 +133,7 @@
         
         
         <div class="col-lg-3">
-        <a href="/upload/result/<%=user.PID%>"  style="text-decoration:none;">
+        <a href="/view/result/<%=user.PID%>"  style="text-decoration:none;">
          <div class="alert alert-success" style="padding:30px;">
          <center>
          <img src="/images/research.png" height="170px" width="170px">
@@ -146,8 +147,8 @@
         <a href="/upload/attendence/<%=user.PID%>"  style="text-decoration:none;">
          <div class="alert alert-info" style="padding:30px;">
          <center>
-         <img src="/images/attendence2.png" height="170px" width="170px">
-            <h2>View Attendence</h2> 
+         <img src="/images/attendence2.png" height="140px" width="140px">
+            <h3>View Student Attendence</h3> 
          </center>       
         </div>
         </a>

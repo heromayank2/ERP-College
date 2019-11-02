@@ -53,15 +53,16 @@
                         <img src="/images/warning.png" height="25px" width="25px" title="Notifications">
                     </button>
                     <div class="dropdown-menu">
-
-                        <a class="dropdown-item" href="#">Action</a>
+                        <%if(announcements){%>
+                            <%announcements.forEach(announcement=>{%>
+                                <a class="dropdown-item" href="#">
+                                    <%=accouncement.Heading%>
+                                </a>
+                                <%})}%>
 
                     </div>
                 </div>
-                <button class="btn">
-                        <img src="/images/camera.png"height="25px" width="25px" title="Holidays">
-                    </button>&nbsp;
-                <a href="/timetable/<%=user.SID%>">
+                <a href="https://docs.google.com/spreadsheets/d/1HWF4SV_bSY48D4RnozeDcFHzrG17EcPfPcp_KHMyPVE/edit?usp=sharing" target="_blank">
                     <img src="/images/schedule.png" height="25px" width="25px" title="Time Table">
                 </a>&nbsp;&nbsp;
                 <a href="/books/<%=user.SID%>">

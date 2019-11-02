@@ -7,6 +7,7 @@ const BodyParser = require('body-parser');
 
 
 var app = express()
+app.use(BodyParser.json());
 app.use(expressLayouts)
 app.set('view engine', 'ejs')
 
@@ -92,7 +93,10 @@ app.get('/dashboard/:sid', (req, res) => {
         var user = rows[0]
         connection.query("SELECT * FROM assignment", (error, rows, fields) => {
             var assignments = rows
-            return res.render("dashboard", { assignments, user })
+            connection.query("SELECT * FROM announcements", (error, rows, fields) => {
+                var announcements = rows
+                return res.render("dashboard", { assignments, announcements, user })
+            })
         })
     })
 })
@@ -219,16 +223,6 @@ app.get('/results/:sid', (req, res) => {
         })
     })
 })
-
-app.get('/timetable/:sid', (req, res) => {
-    var sid = req.params.sid
-    let query = "SELECT * FROM student WHERE SID = '" + sid + "'"
-    connection.query(query, (error, rows, fields) => {
-        var user = rows[0]
-        return res.render('timetable', { user })
-    })
-})
-
 app.get('/create/assignment/:pid', (req, res) => {
     var pid = req.params.pid
     let query = "SELECT * FROM professor WHERE PID = '" + pid + "'"
@@ -312,6 +306,17 @@ app.get('/view/assignment/:pid', (req, res) => {
     })
 })
 
+app.post('/create/announcement/:pid', (req, res) => {
+    var pid = req.params.pid
+    const { heading, cdate, edate, content, restriction } = req.body
+    const query = "INSERT INTO announcement (Creation Date,Heading,Content,Expiry Date, Restrictions) VALUES ('" + cdate + "','" + heading + "','" + content + "','" + edate + "','" + restriction + "')"
+    connection.query(query, (error, rows, fields) => {
+        if (error) {
+            console.log(error)
+        }
+        return res.redirect("/create/announcement/" + pid)
+    })
+})
 
 app.use("/", express.static(__dirname + '/assets/'));
 

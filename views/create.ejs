@@ -46,22 +46,22 @@
                 <h1 style="font-family: 'Press Start 2P', cursive;color: #FFF3CD;">
                     Create Announcement</h1>
             </center>
-            <form style="margin-left:200px;margin-right:200px;margin-top:40px;" action="/create/announcement/" method="post">
+            <form style="margin-left:200px;margin-right:200px;margin-top:40px;" action="/create/announcement/<%=user.PID%>" method="post">
                 <div class="form-group">
                     <label for="heading">Heading</label>
-                    <input type="heading" class="form-control" id="heading" placeholder="heading">
+                    <input type="text" class="form-control" id="heading" placeholder="heading">
                 </div>
                 <div class="form-group">
                     <label for="cdate">Creation Date:</label>
-                    <input type="cdate" class="form-control" id="cdate" placeholder="DD/MM/YYYY">
+                    <input type="text" class="form-control" id="cdate" placeholder="DD/MM/YYYY">
                 </div>
                 <div class="form-group">
                     <label for="content">Content</label>
-                    <textarea type="content" class="form-control" id="content" placeholder="Content"></textarea>
+                    <textarea type="text" class="form-control" id="content" placeholder="Content"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="edate">Expiry Date:</label>
-                    <input type="edate" class="form-control" id="edate" placeholder="DD/MM/YYYY">
+                    <input type="text" class="form-control" id="edate" placeholder="DD/MM/YYYY">
                 </div>
                 <div class="form-group">
                     <label for="restriction">Restricted</label>
