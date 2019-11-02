@@ -4,8 +4,8 @@ Content-Type: application/json
 {
 	"heading":"Inter IIIT",
 	"content":"Inter IIIT KOTA",
-	"cdate":"01/11/2019",
-	"edate":"11/11/2019",
+	"cdate":"02-11-2019",
+	"edate":"11-11-2019",
 	"restriction":"2019"
 }
 ###
@@ -13,5 +13,10 @@ POST http://localhost:4000/create/event/kyEzYfh2BTylIN2L55HW
 Content-Type: application/json
 
 {
-	
+	"heading":"NEW Microsoft Student Partner Foundation",
+	"description":"NEW A event by msft jaipur",
+	"iurl":"NEW http://google.com",
+	"date":"NEW 03-19-2019",
+	"eurl":"NEW http://localhost:4000",
+	"time":"10:00pm"
 }

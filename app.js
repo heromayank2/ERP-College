@@ -309,8 +309,8 @@ app.get('/view/assignment/:pid', (req, res) => {
 app.post('/create/announcement/:pid', (req, res) => {
     var pid = req.params.pid
     const { heading, cdate, edate, content, restriction } = req.body
-    // const query = "INSERT INTO announcement (Creation Date,Heading,Content,Expiry Date, Restrictions) VALUES ('" + cdate + "','" + heading + "','" + content + "','" + edate + "','" + restriction + "')"
-    connection.query("INSERT INTO announcement (Creation Date,Heading,Content,Expiry Date, Restrictions) VALUES (?,?,?,?,?);", [cdate, heading, content, edate, restriction], (error, rows, fields) => {
+    console.log(req.body)
+    connection.query("INSERT INTO announcements (CreationDate,Heading,Content,ExpiryDate, Restrictions) VALUES (?,?,?,?,?);", [cdate, heading, content, edate, restriction], (error, rows, fields) => {
         if (error) {
             console.log(error)
         }
@@ -320,7 +320,7 @@ app.post('/create/announcement/:pid', (req, res) => {
 app.post('/create/assignment/:pid', (req, res) => {
     var pid = req.params.pid
     const { heading, deadline, content, year, batch } = req.body
-    connection.query("INSERT INTO assignment (Year, Batch, PID, Deadline, Content, Heading) VALUES (?,?,?,?,?);", [year, batch, pid, deadline, content, heading], (error, rows, fields) => {
+    connection.query("INSERT INTO assignment (Year, Batch, PID, Deadline, Content, Heading) VALUES (?,?,?,?,?,?);", [year, batch, pid, deadline, content, heading], (error, rows, fields) => {
         if (error) {
             console.log(error);
         }
@@ -330,7 +330,7 @@ app.post('/create/assignment/:pid', (req, res) => {
 app.post('/create/event/:pid', (req, res) => {
     var pid = req.params.pid
     const { heading, date, description, iurl, eurl, time } = req.body
-    connection.query("INSERT INTO events (Date, Heading, Description, Image URLs, URL, Time) VALUES (?,?,?,?,?,?);", [date, heading, description, iurl, eurl, time], (error, rows, fields) => {
+    connection.query("INSERT INTO events (Date, Heading, Description, ImageURLs, URL, Time) VALUES (?,?,?,?,?,?);", [date, heading, description, iurl, eurl, time], (error, rows, fields) => {
         if (error) {
             console.log(error);
         }

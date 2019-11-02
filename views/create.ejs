@@ -53,7 +53,7 @@
                 </div>
                 <div class="form-group">
                     <label for="cdate">Creation Date:</label>
-                    <input type="text" class="form-control" id="cdate" placeholder="DD/MM/YYYY">
+                    <input type="text" class="form-control" id="cdate" placeholder="DD-MM-YYYY">
                 </div>
                 <div class="form-group">
                     <label for="content">Content</label>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="form-group">
                     <label for="edate">Expiry Date:</label>
-                    <input type="text" class="form-control" id="edate" placeholder="DD/MM/YYYY">
+                    <input type="text" class="form-control" id="edate" placeholder="DD-MM-YYYY">
                 </div>
                 <div class="form-group">
                     <label for="restriction">Restricted</label>
@@ -126,14 +126,14 @@
                                 <h1 style="font-family: 'Press Start 2P', cursive;color: rgb(209, 102, 111);">
                                     Create event</h1>
                             </center>
-                            <form style="margin-left:200px;margin-right:200px;margin-top:40px;" action="/create/assignment/" method="post">
+                            <form style="margin-left:200px;margin-right:200px;margin-top:40px;" action="/create/event/<%=user.PID%>" method="post">
                                 <div class="form-group">
                                     <label for="heading">Heading</label>
                                     <input type="text" class="form-control" id="heading" placeholder="heading">
                                 </div>
                                 <div class="form-group">
                                     <label for="date">Date</label>
-                                    <input type="text" class="form-control" id="date" placeholder="dd/mm/yyyy">
+                                    <input type="text" class="form-control" id="date" placeholder="dd-mm-yyyy">
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description</label>
