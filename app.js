@@ -213,10 +213,10 @@ app.use('/attendence/:sid', (req, res) => {
 
 app.get('/results/:sid', (req, res) => {
     var sid = req.params.sid
-    let query = "SELECT * FROM student WHERE SID = '" + sid + "'"
-    connection.query(query, (error, rows, fields) => {
+    let query = "SELECT * FROM student WHERE SID = ?"
+    connection.query(query, [sid], (error, rows, fields) => {
         var user = rows[0]
-        connection.query("SELECT * FROM result Where SID ='" + user.ID + "'", (error, rows, fields) => {
+        connection.query("SELECT * FROM result Where SID =?", [user.ID], (error, rows, fields) => {
             var results = rows
             console.log(results)
             return res.render("results", { results, user })
@@ -225,8 +225,8 @@ app.get('/results/:sid', (req, res) => {
 })
 app.get('/create/assignment/:pid', (req, res) => {
     var pid = req.params.pid
-    let query = "SELECT * FROM professor WHERE PID = '" + pid + "'"
-    connection.query(query, (error, rows, fields) => {
+    let query = "SELECT * FROM professor WHERE PID = ?"
+    connection.query(query, [pid], (error, rows, fields) => {
         var user = rows[0]
         var create = "assignment"
         return res.render("create", { user, create })
@@ -236,8 +236,8 @@ app.get('/create/assignment/:pid', (req, res) => {
 
 app.get('/create/event/:pid', (req, res) => {
     var pid = req.params.pid
-    let query = "SELECT * FROM professor WHERE PID = '" + pid + "'"
-    connection.query(query, (error, rows, fields) => {
+    let query = "SELECT * FROM professor WHERE PID = ?"
+    connection.query(query, [pid], (error, rows, fields) => {
         var user = rows[0]
         var create = "event"
         return res.render("create", { user, create })
@@ -246,8 +246,8 @@ app.get('/create/event/:pid', (req, res) => {
 
 app.get('/upload/result/:pid', (req, res) => {
     var pid = req.params.pid
-    let query = "SELECT * FROM professor WHERE PID = '" + pid + "'"
-    connection.query(query, (error, rows, fields) => {
+    let query = "SELECT * FROM professor WHERE PID = ?"
+    connection.query(query, [pid], (error, rows, fields) => {
         var user = rows[0]
         var create = "result"
         return res.render("create", { user, create })
@@ -257,8 +257,8 @@ app.get('/upload/result/:pid', (req, res) => {
 
 app.get('/create/announcement/:pid', (req, res) => {
     var pid = req.params.pid
-    let query = "SELECT * FROM professor WHERE PID = '" + pid + "'"
-    connection.query(query, (error, rows, fields) => {
+    let query = "SELECT * FROM professor WHERE PID = ?"
+    connection.query(query, [pid], (error, rows, fields) => {
         var user = rows[0]
         var create = "announcement"
         return res.render("create", { user, create })
@@ -267,8 +267,8 @@ app.get('/create/announcement/:pid', (req, res) => {
 
 app.get('/view/announcement/:pid', (req, res) => {
     var pid = req.params.pid
-    let query = "SELECT * FROM professor WHERE PID = '" + pid + "'"
-    connection.query(query, (error, rows, fields) => {
+    let query = "SELECT * FROM professor WHERE PID = ?"
+    connection.query(query, [pid], (error, rows, fields) => {
         var user = rows[0]
         var view = "announcement"
         connection.query("SELECT * FROM announcements", (error, rows, fields) => {
@@ -281,8 +281,8 @@ app.get('/view/announcement/:pid', (req, res) => {
 
 app.get('/view/event/:pid', (req, res) => {
     var pid = req.params.pid
-    let query = "SELECT * FROM professor WHERE PID = '" + pid + "'"
-    connection.query(query, (error, rows, fields) => {
+    let query = "SELECT * FROM professor WHERE PID = ?"
+    connection.query(query, [pid], (error, rows, fields) => {
         var user = rows[0]
         var view = "event"
         connection.query("SELECT * FROM events", (error, rows, fields) => {
@@ -294,8 +294,8 @@ app.get('/view/event/:pid', (req, res) => {
 })
 app.get('/view/assignment/:pid', (req, res) => {
     var pid = req.params.pid
-    let query = "SELECT * FROM professor WHERE PID = '" + pid + "'"
-    connection.query(query, (error, rows, fields) => {
+    let query = "SELECT * FROM professor WHERE PID =?"
+    connection.query(query, [pid], (error, rows, fields) => {
         var user = rows[0]
         var view = "assignment"
         connection.query("SELECT * FROM assignment", (error, rows, fields) => {
@@ -309,14 +309,35 @@ app.get('/view/assignment/:pid', (req, res) => {
 app.post('/create/announcement/:pid', (req, res) => {
     var pid = req.params.pid
     const { heading, cdate, edate, content, restriction } = req.body
-    const query = "INSERT INTO announcement (Creation Date,Heading,Content,Expiry Date, Restrictions) VALUES ('" + cdate + "','" + heading + "','" + content + "','" + edate + "','" + restriction + "')"
-    connection.query(query, (error, rows, fields) => {
+    // const query = "INSERT INTO announcement (Creation Date,Heading,Content,Expiry Date, Restrictions) VALUES ('" + cdate + "','" + heading + "','" + content + "','" + edate + "','" + restriction + "')"
+    connection.query("INSERT INTO announcement (Creation Date,Heading,Content,Expiry Date, Restrictions) VALUES (?,?,?,?,?);", [cdate, heading, content, edate, restriction], (error, rows, fields) => {
         if (error) {
             console.log(error)
         }
         return res.redirect("/create/announcement/" + pid)
     })
 })
+app.post('/create/assignment/:pid', (req, res) => {
+    var pid = req.params.pid
+    const { heading, deadline, content, year, batch } = req.body
+    connection.query("INSERT INTO assignment (Year, Batch, PID, Deadline, Content, Heading) VALUES (?,?,?,?,?);", [year, batch, pid, deadline, content, heading], (error, rows, fields) => {
+        if (error) {
+            console.log(error);
+        }
+        return res.redirect("/create/assignment/" + pid)
+    })
+})
+app.post('/create/event/:pid', (req, res) => {
+    var pid = req.params.pid
+    const { heading, date, description, iurl, eurl, time } = req.body
+    connection.query("INSERT INTO events (Date, Heading, Description, Image URLs, URL, Time) VALUES (?,?,?,?,?,?);", [date, heading, description, iurl, eurl, time], (error, rows, fields) => {
+        if (error) {
+            console.log(error);
+        }
+        return res.redirect("/create/event/" + pid)
+    })
+})
+
 
 app.use("/", express.static(__dirname + '/assets/'));
 
