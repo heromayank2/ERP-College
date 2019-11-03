@@ -337,6 +337,18 @@ app.post('/create/event/:pid', (req, res) => {
         return res.redirect("/create/event/" + pid)
     })
 })
+app.get('/view/attendance/:sid',(req,res)=>{
+    var sid = req.params.sid
+    // change the column and table names accordingly, here the value for absent is null
+    connection.query("SELECT subject,COUNT(present),COUNT(*) FROM attendance GROUP BY subject;",(error,rows,fields)=>{
+        if(error){
+            console.log(error)
+        }
+        // do as required
+        return res.render()
+    })
+})
+
 
 
 app.use("/", express.static(__dirname + '/assets/'));
