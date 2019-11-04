@@ -28,7 +28,9 @@
                 <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Fees Status:</strong>
                     <%=user['Fees Status']%>
                 </p><br><br>
-                <button class="btn btn-success">Logout</button>
+                <a href="/" style="text-decoration: none;">
+                    <button class="btn btn-success">Logout</button>
+                </a>
                 <br><br>
 
             </div>
@@ -51,15 +53,14 @@
                 <div class="btn-group">
                     <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="/images/warning.png" height="25px" width="25px" title="Notifications">
+                        <%=announcements.length%>
                     </button>
                     <div class="dropdown-menu">
-                        <%if(announcements){%>
-                            <%announcements.forEach(announcement=>{%>
-                                <a class="dropdown-item" href="#">
-                                    <%=accouncement.Heading%>
-                                </a>
-                                <%})}%>
-
+                        <%announcements.forEach(announcement=>{%>
+                            <a class="dropdown-item" href="#">
+                                <%=announcement.Heading%>
+                            </a>
+                            <%})%>
                     </div>
                 </div>
                 <a href="https://docs.google.com/spreadsheets/d/1HWF4SV_bSY48D4RnozeDcFHzrG17EcPfPcp_KHMyPVE/edit?usp=sharing" target="_blank">
@@ -72,7 +73,7 @@
         </div>
         <a href="/assignments/<%=user.SID%>" style="text-decoration: none;">
             <div class="alert alert-success" style="margin-bottom: 30px;">
-                <div class="row ">
+                <div class="row">
                     <div class="col-lg-3 my-auto " style='padding:40px;'>
                         <center>
                             <div>
@@ -81,10 +82,15 @@
                         </center>
                     </div>
                     <div class="col-lg-9 " style="padding: 30px; ">
-                        <h1>Assignments</h1>
+                        <h1>Assignments</h1><br>
                         <ul>
-
-
+                            <%if(assignments){%>
+                                <%assignments.forEach(assignment=>{%>
+                                    <li>
+                                        <%=assignment.Heading%>
+                                    </li>
+                                    <%})%>
+                                        <%}%>
                         </ul>
                     </div>
                 </div>

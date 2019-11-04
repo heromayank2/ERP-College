@@ -49,23 +49,23 @@
             <form style="margin-left:200px;margin-right:200px;margin-top:40px;" action="/create/announcement/<%=user.PID%>" method="post">
                 <div class="form-group">
                     <label for="heading">Heading</label>
-                    <input type="text" class="form-control" id="heading" placeholder="heading">
+                    <input type="heading" name="heading" class="form-control" id="heading" placeholder="heading">
                 </div>
                 <div class="form-group">
                     <label for="cdate">Creation Date:</label>
-                    <input type="text" class="form-control" id="cdate" placeholder="DD-MM-YYYY">
+                    <input type="text" name="cdate" class="form-control" id="cdate" placeholder="DD-MM-YYYY">
                 </div>
                 <div class="form-group">
                     <label for="content">Content</label>
-                    <textarea type="text" class="form-control" id="content" placeholder="Content"></textarea>
+                    <textarea type="content" name="content" class="form-control" id="content" placeholder="Content"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="edate">Expiry Date:</label>
-                    <input type="text" class="form-control" id="edate" placeholder="DD-MM-YYYY">
+                    <input type="text" name="edate" class="form-control" id="edate" placeholder="DD-MM-YYYY">
                 </div>
                 <div class="form-group">
                     <label for="restriction">Restricted</label>
-                    <select class="form-control" id="restriction">
+                    <select class="form-control" name="restriction" id="restriction">
                             <option>All</option>
                             <option>2016</option>
                             <option>2017</option>
@@ -126,33 +126,33 @@
                                 <h1 style="font-family: 'Press Start 2P', cursive;color: rgb(209, 102, 111);">
                                     Create event</h1>
                             </center>
-                            <form style="margin-left:200px;margin-right:200px;margin-top:40px;" action="/create/event/<%=user.PID%>" method="post">
-                                <div class="form-group">
-                                    <label for="heading">Heading</label>
-                                    <input type="text" class="form-control" id="heading" placeholder="heading">
-                                </div>
-                                <div class="form-group">
-                                    <label for="date">Date</label>
-                                    <input type="text" class="form-control" id="date" placeholder="dd-mm-yyyy">
-                                </div>
-                                <div class="form-group">
-                                    <label for="description">Description</label>
-                                    <textarea type="description" class="form-control" id="description" placeholder="Description"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="iurl">Image URL</label>
-                                    <input type="text" class="form-control" id="iurl" placeholder="http://">
-                                </div>
-                                <div class="form-group">
-                                    <label for="eurl">Event URL</label>
-                                    <input type="text" class="form-control" id="eurl" placeholder="Event URL (if any)">
-                                </div>
-                                <div class="form-group">
-                                    <label for="time">Time</label>
-                                    <input type="text" class="form-control" id="time" placeholder="hh:mm:ss">
-                                </div>
-                                <button type="submit" class="btn btn-danger">Submit</button>
-                            </form>
+                             <form style="margin-left:200px;margin-right:200px;margin-top:40px;" action="/create/event/<%=user.PID%>" method="post">
+                                    <div class="form-group">
+                                        <label for="heading">Heading</label>
+                                        <input type="text" name="heading" class="form-control" id="heading" placeholder="heading">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="date">Date</label>
+                                        <input type="text" name="date" class="form-control" id="date" placeholder="dd/mm/yyyy">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <input type="description"  name="description" class="form-control" id="description" placeholder="Description">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="iurl">Image URL</label>
+                                        <input type="text" name="iurl" class="form-control" id="iurl" placeholder="http://">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="eurl">Event URL</label>
+                                        <input type="text" name="eurl" class="form-control" id="eurl" placeholder="Event URL (if any)">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="time">Time</label>
+                                        <input type="text" name="time" class="form-control" id="time" placeholder="hh:mm:ss">
+                                    </div>
+                                    <button type="submit" class="btn btn-danger">Submit</button>
+                                </form>
                             <%}%>
                                     <%if(create=="result"){%>
                                         <a href="/teacher/dashboard/<%=user['PID']%>" style="text-decoration: none;">
@@ -164,27 +164,27 @@
                                         <form style="margin-left:200px;margin-right:200px;margin-top:40px;" action="/create/assignment/" method="post">
                                             <div class="form-group">
                                                 <label for="heading">Student ID</label>
-                                                <input type="text" class="form-control" id="heading" placeholder="heading">
+                                                <input type="text" name="heading" class="form-control" id="heading" placeholder="heading">
                                             </div>
                                             <div class="form-group">
                                                 <label for="date">Date</label>
-                                                <input type="text" class="form-control" id="date" placeholder="dd/mm/yyyy">
+                                                <input type="text" name="date" class="form-control" id="date" placeholder="dd/mm/yyyy">
                                             </div>
                                             <div class="form-group">
                                                 <label for="description">Description</label>
-                                                <textarea type="description" class="form-control" id="description" placeholder="Description"></textarea>
+                                                <textarea type="description"  name="desciption" class="form-control" id="description" placeholder="Description"></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label for="iurl">Image URL</label>
-                                                <input type="text" class="form-control" id="iurl" placeholder="http://">
+                                                <input type="text" name="iurl" class="form-control" id="iurl" placeholder="http://">
                                             </div>
                                             <div class="form-group">
                                                 <label for="eurl">Event URL</label>
-                                                <input type="text" class="form-control" id="eurl" placeholder="Event URL (if any)">
+                                                <input type="text" name="eurl" class="form-control" id="eurl" placeholder="Event URL (if any)">
                                             </div>
                                             <div class="form-group">
                                                 <label for="time">Time</label>
-                                                <input type="text" class="form-control" id="time" placeholder="hh:mm:ss">
+                                                <input type="text" name="time" class="form-control" id="time" placeholder="hh:mm:ss">
                                             </div>
                                             <button type="submit" class="btn btn-danger">Submit</button>
                                         </form>

@@ -1,0 +1,57 @@
+<div class="row" style="margin-right: 0px;;">
+    <div class="col-lg-3 " style="height:100vh; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);position: fixed;">
+        <center>
+            <img src="/professor-images/<%=user.ID%>.jpg" height="200px" width="200px" style="border-radius: 50%;margin-top: 30px;">
+            <hr style="width:40%">
+            <h2 style="font-family: 'Enriqueta', serif;">
+                <%=user.Name%>
+            </h2>
+            <br><br>
+            <div style="text-align: left;padding-left:50px;">
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Professor Id:</strong>
+                    <%=user.ID%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Phone Number:</strong>
+                    <%=user['Phone Number']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Email:</strong>
+                    <%=user['Email']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Role:</strong>
+                    <%=user['Role']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Joining Date:</strong>
+                    <%=user['JoiningDate']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Salary Status:</strong>
+                    <%=user['Salary Status']%>
+                </p><br><br>
+                <button class="btn btn-success">Logout</button>
+                <br><br>
+
+            </div>
+            <div class="footer my-auto" style="background-color: #f1f1f1;bottom: 0;position:absolute;left:0;margin-left: 20px;;">
+                <center>
+                    <p>Terms and Conditions</p>
+                </center>
+            </div>
+
+        </center>
+    </div>
+    <div class="col-lg-9 p-5" style="margin-left:25%">
+        <a href="/teacher/dashboard/<%=user.PID%>" style="text-decoration: none;">
+                ↩️</a>
+        <center>
+            <h1 style="font-family: 'Press Start 2P', cursive;color:goldenrod;">
+                Search Student Database using<br> Student ID:</h1>
+            <form style="margin-top:60px;" action="/view/result/single/<%=user.PID%>/" method="get">
+                <div class="form-group">
+                    <input class="form-control" name="sid" type="text" placeholder="Enter Student's College ID" style="width:25%">
+                </div>
+                <button type="submit" class="btn btn-warning">
+                    Search
+                </button>
+            </form>
+        </center>
+    </div>
+</div>

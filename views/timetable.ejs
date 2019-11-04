@@ -41,44 +41,16 @@
         </center>
     </div>
     <div class="col-lg-9" style="padding:60px;margin-left:25%;">
-        <a href="/dashboard/<%=user['SID']%>" style="text-decoration: none;">
-                ↩️</a>
         <center>
             <h1 style="font-family: 'Press Start 2P', cursive;color: palevioletred;">
-                Results
-            </h1><br><br>
-            <table class="table">
-                <thead style="background-color:indianred;">
-                    <tr>
-                        <th scope="col">Course Code</th>
-                        <th scope="col">Semester</th>
-                        <th scope="col">Mid Term</th>
-                        <th scope="col">End Term</th>
-                        <th scope="col">Final Grade</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <%results.forEach(result=>{%>
-                        <tr>
-                            <td>
-                                <%=result.CourseCode%>
-                            </td>
-                            <td>
-                                <%=result.Semester%>
-                            </td>
-                            <td>
-                                <%=result.MidTermScore%>
-                            </td>
-                            <td>
-                                <%=result.EndTermScore%>
-                            </td>
-                            <td>
-                                <%=result.FinalGrade%>
-                            </td>
-                        </tr>
-                        <%})%>
-                </tbody>
-            </table>
+                Time Table
+            </h1>
+            <%if(user.Batch.includes("A")){%>
+                <img src="/images/ttcse.jpg" height="60%" width="50%">
+            <%}else{%>
+                <img src="/images/ttece.jpg" height="60%" width="50%">
+            <%}%>
+            
         </center>
 
     </div>

@@ -28,79 +28,84 @@
                 <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Fees Status:</strong>
                     <%=user['Fees Status']%>
                 </p><br><br>
-                <button class="btn btn-success">Logout</button>
+
+                <a href="/" style="text-decoration: none;">
+                    <div class="btn btn-success">Logout</button>
+                </a>
+                </button>
+
                 <br><br>
 
-            </div>
-            <div class="footer my-auto" style="background-color: #f1f1f1;bottom: 0;position:absolute;left:0;margin-left: 20px;;">
-                <center>
-                    <p>Terms and Conditions</p>
-                </center>
-            </div>
+                </div>
+                <div class="footer my-auto" style="background-color: #f1f1f1;bottom: 0;position:absolute;left:0;margin-left: 20px;;">
+                    <center>
+                        <p>Terms and Conditions</p>
+                    </center>
+                </div>
 
         </center>
-    </div>
-    <div class="col-lg-3" style="margin-left:25%;padding:30px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);position: fixed;">
-        <a href="/assignments/<%=user['SID']%>" style="text-decoration: none;">
-            <div class="alert alert-success">
-                <center>
-                    <img src="/images/assignments.png" height="150px" width="150px">
-                    <h2>Assignments</h2>
-                </center>
-            </div>
-        </a>
-        <a href="/professors/<%=user['SID']%>" style="text-decoration: none;">
-            <div class="alert alert-warning">
-                <center>
-                    <img src="/images/professors.png" height="150px" width="150px">
-                    <h2>Professors</h2>
-                </center>
-            </div>
-        </a>
-        <a href="/results/<%=user['SID']%>" style="text-decoration: none;">
-            <div class="alert alert-info">
-                <center>
-                    <img src="/images/results.png" height="150px" width="150px">
-                    <h2>Results</h2>
-                </center>
-            </div>
-        </a>
-    </div>
-    <div class="col-lg-6" style="margin-left:50%;padding:30px;">
-        <a href="/dashboard/" style="text-decoration: none;">
+        </div>
+        <div class="col-lg-3" style="margin-left:25%;padding:30px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);position: fixed;">
+            <a href="/assignments/<%=user['SID']%>" style="text-decoration: none;">
+                <div class="alert alert-success">
+                    <center>
+                        <img src="/images/assignments.png" height="150px" width="150px">
+                        <h2>Assignments</h2>
+                    </center>
+                </div>
+            </a>
+            <a href="/professors/<%=user['SID']%>" style="text-decoration: none;">
+                <div class="alert alert-warning">
+                    <center>
+                        <img src="/images/professors.png" height="150px" width="150px">
+                        <h2>Professors</h2>
+                    </center>
+                </div>
+            </a>
+            <a href="/results/<%=user['SID']%>" style="text-decoration: none;">
+                <div class="alert alert-info">
+                    <center>
+                        <img src="/images/results.png" height="150px" width="150px">
+                        <h2>Results</h2>
+                    </center>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-6" style="margin-left:50%;padding:30px;">
+            <a href="/dashboard/<%=user.SID%>" style="text-decoration: none;">
                 ↩️</a>
-        <center>
-            <h1 style="font-family: 'Press Start 2P', cursive;color: #F8D7DA;">
-                Events</h1>
-            <br>
-            <%events.forEach((event)=>{%>
-                <div class="alert alert-danger" role="alert">
-                    <div class="row">
-                        <div clas="col-lg-3">
-                            <center>
-                                <img src="<%=event['Image URLs']%>" style="border-radius: 50%;width:200px;height: 200px;border:2px solid pink">
-                            </center>
-                        </div>
-                        <div class="col-lg-8">
-                            <h3>
-                                <%=event['Heading']%>
-                            </h3>
-                            <h6>
-                                Date:
-                                <%=event['Date']%>
-                                    Time:
-                                    <%=event['Time']%>
-                            </h6>
-                            <p>
-                                <%=event.Description%>
-                            </p>
-                            <%if(event.URL){%>
-                                <h6>Follow Here: <a href="<%=event.URL%>">link</a></h6>
-                                <%}%>
+            <center>
+                <h1 style="font-family: 'Press Start 2P', cursive;color: #F8D7DA;">
+                    Events</h1>
+                <br>
+                <%events.forEach((event)=>{%>
+                    <div class="alert alert-danger" role="alert">
+                        <div class="row">
+                            <div clas="col-lg-3">
+                                <center>
+                                    <img src="<%=event['ImageURLs']%>" style="border-radius: 50%;width:200px;height: 200px;border:2px solid pink">
+                                </center>
+                            </div>
+                            <div class="col-lg-8">
+                                <h3>
+                                    <%=event['Heading']%>
+                                </h3>
+                                <h6>
+                                    Date:
+                                    <%=event['Date']%>
+                                        Time:
+                                        <%=event['Time']%>
+                                </h6>
+                                <p>
+                                    <%=event.Description%>
+                                </p>
+                                <%if(event.URL){%>
+                                    <h6>Follow Here: <a href="<%=event.URL%>">link</a></h6>
+                                    <%}%>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <%})%>
-        </center>
+                    <%})%>
+            </center>
+        </div>
     </div>
-</div>

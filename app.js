@@ -7,7 +7,6 @@ const BodyParser = require('body-parser');
 
 
 var app = express()
-app.use(BodyParser.json());
 app.use(expressLayouts)
 app.set('view engine', 'ejs')
 
@@ -95,7 +94,7 @@ app.get('/dashboard/:sid', (req, res) => {
             var assignments = rows
             connection.query("SELECT * FROM announcements", (error, rows, fields) => {
                 var announcements = rows
-                return res.render("dashboard", { assignments, announcements, user })
+                return res.render("dashboard", { assignments, user, announcements })
             })
         })
     })
@@ -223,6 +222,16 @@ app.get('/results/:sid', (req, res) => {
         })
     })
 })
+
+app.get('/timetable/:sid', (req, res) => {
+    var sid = req.params.sid
+    let query = "SELECT * FROM student WHERE SID = '" + sid + "'"
+    connection.query(query, (error, rows, fields) => {
+        var user = rows[0]
+        return res.render('timetable', { user })
+    })
+})
+
 app.get('/create/assignment/:pid', (req, res) => {
     var pid = req.params.pid
     let query = "SELECT * FROM professor WHERE PID = ?"
@@ -309,7 +318,6 @@ app.get('/view/assignment/:pid', (req, res) => {
 app.post('/create/announcement/:pid', (req, res) => {
     var pid = req.params.pid
     const { heading, cdate, edate, content, restriction } = req.body
-    console.log(req.body)
     connection.query("INSERT INTO announcements (CreationDate,Heading,Content,ExpiryDate, Restrictions) VALUES (?,?,?,?,?);", [cdate, heading, content, edate, restriction], (error, rows, fields) => {
         if (error) {
             console.log(error)
@@ -338,6 +346,46 @@ app.post('/create/event/:pid', (req, res) => {
     })
 })
 
+// get request for result for teacher
+app.get('/view/result/:pid/', (req, res) => {
+    var pid = req.params.pid
+    let query = "SELECT * FROM professor WHERE PID = ?"
+    connection.query(query, [pid], (error, rows, fields) => {
+        var user = rows[0];
+        res.render("ask-student-id", { user })
+    })
+})
+
+app.get('/view/result/single/:pid/', (req, res) => {
+    var sid = req.query.sid;
+    var pid = req.params.pid
+    let query = "SELECT * FROM professor WHERE PID = ?"
+    connection.query(query, [pid], (error, rows, fields) => {
+        var user = rows[0];
+        let query = "SELECT * FROM result WHERE SID = ?"
+        connection.query(query, [sid], (error, rows, fields) => {
+            var results = rows;
+            let query = "SELECT * FROM student WHERE ID = ?"
+            connection.query(query, [sid], (error, rows, fields) => {
+                var student = rows[0]
+                return res.render("teacher-result", { user, results, student })
+            })
+
+        })
+    })
+})
+
+// YET TO BE MADE
+app.get('/view/attendance/:sid', (req, res) => {
+    var sid = req.params.sid
+        // change the column and table names accordingly, here the value for absent is null
+    connection.query("SELECT subject,COUNT(present),COUNT(*) FROM attendance GROUP BY subject;", (error, rows, fields) => {
+        if (error) {
+            console.log(error)
+        }
+        return res.render('teacher-attendance')
+    })
+})
 
 app.use("/", express.static(__dirname + '/assets/'));
 

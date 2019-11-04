@@ -1,0 +1,115 @@
+<div class="row" style="margin-right: 0px;;">
+    <div class="col-lg-3 " style="height:100vh; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);position: fixed;">
+        <center>
+            <img src="/professor-images/<%=user.ID%>.jpg" height="200px" width="200px" style="border-radius: 50%;margin-top: 30px;">
+            <hr style="width:40%">
+            <h2 style="font-family: 'Enriqueta', serif;">
+                <%=user.Name%>
+            </h2>
+            <br><br>
+            <div style="text-align: left;padding-left:50px;">
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Professor Id:</strong>
+                    <%=user.ID%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Phone Number:</strong>
+                    <%=user['Phone Number']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Email:</strong>
+                    <%=user['Email']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Role:</strong>
+                    <%=user['Role']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Joining Date:</strong>
+                    <%=user['JoiningDate']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Salary Status:</strong>
+                    <%=user['Salary Status']%>
+                </p><br><br>
+                <button class="btn btn-success">Logout</button>
+                <br><br>
+
+            </div>
+            <div class="footer my-auto" style="background-color: #f1f1f1;bottom: 0;position:absolute;left:0;margin-left: 20px;;">
+                <center>
+                    <p>Terms and Conditions</p>
+                </center>
+            </div>
+
+        </center>
+    </div>
+    <div class="col-lg-9 p-5" style="margin-left:25%">
+        <div>
+            <a href="/view/result/<%=user.PID%>" style="text-decoration: none;">
+                    ↩️</a>
+            <center>
+                <h1 style="font-family: 'Press Start 2P', cursive;color:lightsalmon;">
+                    Student Details</h1>
+                <img src="/student-images/<%=student.ID%>.jpg" width="200px" height="200px" style="border-radius: 50%;;">
+                <h1 style="font-family: 'Enriqueta', serif;">
+                    <%=student.Name%>
+                </h1>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>College Id:</strong>
+                    <%=student.ID%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Phone Number:</strong>
+                    <%=student['Phone Number']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Age:</strong>
+                    <%=student.Age%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"> <strong>Year:</strong>
+
+                    <%=student.Year%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Batch:</strong>
+                    <%=student['Batch']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>Fees Status:</strong>
+                    <%=student['Fees Status']%>
+                </p>
+                <p style="font-family: 'Press Start 2P', cursive; font-size: 11px;"><strong>CGPA:</strong>
+                    <%=student['CGPA']%>
+                </p>
+            </center>
+        </div>
+        <table class="table">
+            <thead style="background-color:darkorange;">
+                <tr>
+                    <th scope="col">Course Code</th>
+                    <th scope="col">Semester</th>
+                    <th scope="col">Student ID</th>
+                    <th scope="col">Mid Term</th>
+                    <th scope="col">End Term</th>
+                    <th scope="col">Final Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%results.forEach(result=>{%>
+                    <tr>
+                        <td>
+                            <%=result.CourseCode%>
+                        </td>
+                        <td>
+                            <%=result.Semester%>
+                        </td>
+                        <td>
+                            <%=result.SID%>
+                        </td>
+                        <td>
+                            <%=result.MidTermScore%>
+                        </td>
+                        <td>
+                            <%=result.EndTermScore%>
+                        </td>
+                        <td>
+                            <%=result.FinalGrade%>
+                        </td>
+                    </tr>
+                    <%})%>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+</script>
