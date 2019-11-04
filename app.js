@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 4000;
 var connection = mysql.createConnection({
     "host": "localhost",
     "user": "root",
-    "password": "",
+    "password": "1701",
     "database": "erp"
 })
 
@@ -345,6 +345,18 @@ app.post('/create/event/:pid', (req, res) => {
         return res.redirect("/create/event/" + pid)
     })
 })
+app.get('/view/attendance/:sid',(req,res)=>{
+    var sid = req.params.sid
+    // change the column and table names accordingly, here the value for absent is null
+    connection.query("SELECT subject,COUNT(present),COUNT(*) FROM attendance GROUP BY subject;",(error,rows,fields)=>{
+        if(error){
+            console.log(error)
+        }
+        // do as required
+        return res.render()
+    })
+})
+
 
 // get request for result for teacher
 app.get('/view/result/:pid/', (req, res) => {
