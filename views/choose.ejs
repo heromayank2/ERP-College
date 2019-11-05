@@ -1,29 +1,47 @@
-<body style="background-color: palegreen;padding:40px;">
-    <img src="/images/iiitk.png" alt="IIITK LOGO" style="height: 60px;width:120px">
-    <center>
+<body style="padding:40px;background-image:url('/images/christmas.jpg'); background-repeat: no-repeat;background-size: 100% 115%;">
+    <div class="container">
 
-        <h1 style="font-size: 50px;font-family: 'Oswald', sans-serif;color: #52de97;margin-bottom:4%;">Welcome to the ERP of IIIT KOTA</h1>
-    </center>
-    <div class="row" style="margin-bottom: 4%;">
-        <div class="col-lg-6">
-            <center>
-                <a href="/student/login" style="text-decoration:none;">
-                    <img src="/images/Student.jpg" style="width:300px;height:300px;border-radius: 50%; border:5px solid #52de97;margin-bottom: 20px;;">
-                    <h1 style="font-size: 30px;font-family: 'Lobster', cursive;color: #52de97;">Student</h1>
-                </a>
-            </center>
+        <div class="row">
+            <div class="col-lg-6" style="padding:60px;padding-bottom:0px;">
+                <center>
+                    <div class="card card-body" style="background:#f76262">
+                        <h1 class="text-center mb-3" style="color:#216583;font-family: 'Oswald', sans-serif;">Welcome !<br>Students Login Here</h1>
+                        <img src="/images/student.jpg" style="border-radius:50%;width:200px;height:200px">
+                        <form action="/dashboard" method="POST">
+                            <div class="form-group">
+                                <label for="sid">Student ID</label>
+                                <input type="text" id="sid" name="sid" class="form-control" placeholder="Enter College ID" style="background:#ffffff88" />
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" style="background:#ffffff88" />
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block" style="background-color: #216583;">Login</button>
+                        </form>
+                    </div>
+                </center>
 
-        </div>
-        <div class="col-lg-6">
-            <center>
-                <a href="/teacher/login" style="text-decoration:none;">
-                    <img src="/images/professor.jpg" style="width:300px;height:300px;border-radius: 50%; border:5px solid #52de97;margin-bottom: 20px;;">
-                    <h1 style="font-size: 30px;font-family: 'Lobster', cursive;color: #52de97;">Professor</h1>
-                </a>
-            </center>
+            </div>
+            <div class="col-lg-6" style="padding:60px; padding-bottom: 0px;;">
+                <center>
+                    <div class="card card-body " style="background:#f76262 ">
+                        <h1 class="text-center mb-3 " style="color:#216583;font-family: 'Oswald', sans-serif; ">Welcome !<br>Professor Login Here</h1>
+                        <img src="/images/teacher.jpg " style="border-radius:50%;width:200px;height:200px ">
+                        <form action="/teacher/dashboard" method="POST">
+                            <div class="form-group ">
+                                <label for="id ">Professor ID</label>
+                                <input type="text " id="id" name="id" class="form-control " placeholder="Enter ID " style="background:#ffffff88 " />
+                            </div>
+                            <div class="form-group ">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" class="form-control " placeholder="Enter Password " style="background:#ffffff88 " />
+                            </div>
+                            <button type="submit " class="btn btn-block " style="background-color:#216583 ; ">Login</button>
+                        </form>
+                    </div>
+                </center>
+            </div>
         </div>
     </div>
-    <center>
-        <h1 style="font-size: 30px;font-family: 'Oswald', sans-serif;color: #52de97;"> Choose Who are you?</h1>
-    </center>
+
 </body>

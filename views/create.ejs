@@ -161,33 +161,48 @@
                                             <h1 style="font-family: 'Press Start 2P', cursive;color: rgb(209, 102, 111);">
                                                 Upload Result</h1>
                                         </center>
-                                        <form style="margin-left:200px;margin-right:200px;margin-top:40px;" action="/create/assignment/" method="post">
+                                        <form style="margin-left:200px;margin-right:200px;margin-top:40px;" action="/upload/result/<%=user.PID%>" method="post">
                                             <div class="form-group">
-                                                <label for="heading">Student ID</label>
-                                                <input type="text" name="heading" class="form-control" id="heading" placeholder="heading">
+                                                <label for="sem">Semester</label>
+                                                <select class="form-control" id="sem" name="sem">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6</option>
+                                                    <option>7</option>
+                                                    <option>8</option>
+                                                </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="date">Date</label>
-                                                <input type="text" name="date" class="form-control" id="date" placeholder="dd/mm/yyyy">
+                                                <label for="cc">Course Code</label>
+                                                 <select class="form-control" id="cc" name="cc">
+                                                    <option>CST202</option>
+                                                    <option>DMT201</option>
+                                                </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="description">Description</label>
-                                                <textarea type="description"  name="desciption" class="form-control" id="description" placeholder="Description"></textarea>
+                                                <label for="sid">Student ID:</label>
+                                                <input type="text"  name="sid" class="form-control" id="sid" placeholder="20XXKUXXXXXX">
                                             </div>
                                             <div class="form-group">
-                                                <label for="iurl">Image URL</label>
-                                                <input type="text" name="iurl" class="form-control" id="iurl" placeholder="http://">
+                                                <label for="midterm">Mid Term</label>
+                                                <input type="text" name="midterm" class="form-control" id="midterm" placeholder="Total Marks Earned Out of 30">
                                             </div>
                                             <div class="form-group">
-                                                <label for="eurl">Event URL</label>
-                                                <input type="text" name="eurl" class="form-control" id="eurl" placeholder="Event URL (if any)">
+                                                <label for="endterm">End Term</label>
+                                                <input type="text" name="endterm" class="form-control" id="endterm" placeholder="Total Marks Earned out of 40">
                                             </div>
                                             <div class="form-group">
-                                                <label for="time">Time</label>
-                                                <input type="text" name="time" class="form-control" id="time" placeholder="hh:mm:ss">
+                                                <label for="grade">Grade</label>
+                                                <input type="text" name="grade" class="form-control" id="time" placeholder="">
                                             </div>
                                             <button type="submit" class="btn btn-danger">Submit</button>
                                         </form>
         <%}%>
     </div>
 </div>
+<script>
+    // TODO : Make Attendance Queries to be Made Synchronous
+</script>

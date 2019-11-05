@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 4000;
 var connection = mysql.createConnection({
     "host": "localhost",
     "user": "root",
-    "password": "1701",
+    "password": "",
     "database": "erp"
 })
 
@@ -38,14 +38,6 @@ connection.connect((err) => {
 
 app.get('/', (req, res) => {
     return res.render('choose')
-})
-
-app.get('/student/login', (req, res) => {
-    return res.render('slogin')
-})
-
-app.get('/teacher/login', (req, res) => {
-    return res.render('tlogin')
 })
 
 app.post('/dashboard', (req, res) => {
@@ -68,6 +60,7 @@ app.post('/dashboard', (req, res) => {
 
 app.post('/teacher/dashboard', (req, res) => {
     const { id, password } = req.body
+    console.log(id + password)
     let query = "SELECT * FROM professor"
     connection.query(query, (err, rows, fields) => {
         i = 0
@@ -345,11 +338,11 @@ app.post('/create/event/:pid', (req, res) => {
         return res.redirect("/create/event/" + pid)
     })
 })
-app.get('/view/attendance/:sid',(req,res)=>{
+app.get('/view/attendance/:sid', (req, res) => {
     var sid = req.params.sid
-    // change the column and table names accordingly, here the value for absent is null
-    connection.query("SELECT subject,COUNT(present),COUNT(*) FROM attendance GROUP BY subject;",(error,rows,fields)=>{
-        if(error){
+        // change the column and table names accordingly, here the value for absent is null
+    connection.query("SELECT subject,COUNT(present),COUNT(*) FROM attendance GROUP BY subject;", (error, rows, fields) => {
+        if (error) {
             console.log(error)
         }
         // do as required
@@ -396,6 +389,57 @@ app.get('/view/attendance/:sid', (req, res) => {
             console.log(error)
         }
         return res.render('teacher-attendance')
+    })
+})
+
+app.post('/upload/result/:pid', (req, res) => {
+    var pid = req.params.pid
+    const { cc, sid, endterm, midterm, grade, sem } = req.body
+    var query = "INSERT INTO result (CourseCode,SID,EndTermScore,Semester,FinalGrade,MidTermScore) VALUES (?,?,?,?,?,?)"
+    connection.query(query, [cc, sid, endterm, sem, grade, midterm], (error, rows, fields) => {
+        if (error) {
+            res.send(error.message)
+        } else {
+            res.redirect('/upload/result/' + pid)
+        }
+    })
+})
+
+app.get("/mark/attendance/ask/:pid", (req, res) => {
+    var pid = req.params.pid
+    let query = "SELECT * FROM professor WHERE PID = ?"
+    connection.query(query, [pid], (error, rows, fields) => {
+        var user = rows[0];
+
+        res.render("ask-mark-attendance", { user, })
+    })
+})
+
+app.get("/mark/attendance/:pid", (req, res) => {
+    var pid = req.params.pid
+    const { year, cc, time, date, ClassStatus } = req.query
+    var cd = {
+        year,
+        cc,
+        time,
+        date,
+        ClassStatus
+    }
+    let query = "SELECT * FROM professor WHERE PID = ?"
+    connection.query(query, [pid], (error, rows, fields) => {
+        var user = rows[0];
+        connection.query("SELECT * FROM student WHERE Year =?", [year], (errors, rows, colums) => {
+            var students = rows
+            res.render("mark-attendance", { user, cd, students })
+        })
+
+    })
+})
+app.post("/mark/attendance/:pid", (req, res) => {
+    const { SID, date, time, cc, present, ClassStatus } = req.body
+    const query = "INSERT INTO attendence (SID, Date, Time ,CourseCode,Present,ClassStatus) VALUES (?,?,?,?,?,?)"
+    connection.query(query, [SID, date, time, cc, present, ClassStatus], (error, rows, fields) => {
+        return;
     })
 })
 
